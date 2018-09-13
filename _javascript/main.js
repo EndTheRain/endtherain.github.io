@@ -21,6 +21,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Bind navbar scroll-to-sections
+  const scrollSections = document.querySelectorAll('.scroll-section');
+  if (scrollSections.length > 0) {
+    scrollSections.forEach(element => {
+      element.addEventListener('click', () => {
+        scrollToSection(element.name);
+      });
+    })
+  }
+
   // Bind email sign up button
   document.getElementById('updates-button').addEventListener('click', submitEmailForm);
 
@@ -96,4 +106,11 @@ function submitContactForm() {
     document.getElementById('contact-form').classList.add('is-hidden');
     document.getElementById('contact-success').classList.remove('is-hidden');
   }
+}
+
+// Let's scroll places, smoothly
+function scrollToSection(id) {
+  document.getElementById(id).scrollIntoView({
+    behavior: 'smooth'
+  });
 }
